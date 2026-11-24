@@ -90,7 +90,7 @@ def home():
             try:
                 resp = client.messages.create(
                     model="claude-sonnet-5-5",
-                    max_tokens=3000,
+                    max_tokens=16000,
                     messages=[{"role": "user", "content": prompt}],
                 )
                 text = "".join(b.text for b in resp.content if b.type == "text")
