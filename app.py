@@ -93,7 +93,8 @@ def home():
                     max_tokens=3000,
                     messages=[{"role": "user", "content": prompt}],
                 )
-                text = resp.content[0].text
+                text = "".join(b.text for b in resp.content if b.type == "text")
+
                 text = text[text.find("["):text.rfind("]") + 1]
                 clips = [type("C", (), d) for d in json.loads(text)]
             except Exception as e:
